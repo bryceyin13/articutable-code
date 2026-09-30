@@ -1,0 +1,50 @@
+
+Create exactly one reconstruction-ready condition image of the current target for single-image 3D reconstruction.
+
+Exactly five target-local reference images are attached in this order:
+1. an unmasked local front-view context crop around the current target;
+2. the current target's original front-view segment crop with its visible appearance;
+3. the same front-view segment cut out on white;
+4. an unmasked local top-view context crop around the matched target when available, otherwise repeated front-local context evidence;
+5. the geometrically matched top-view segment crop when available, otherwise repeated front-segment evidence.
+
+TARGET IDENTITY
+
+{{TARGET_EVIDENCE}}
+
+Use the identity text to identify the target and only as a conservative semantic prior for geometry that is genuinely unobserved because of occlusion, cropping, or mask omission. It must never alter or replace source-visible target geometry.
+
+CAMERA PLAN
+
+{{DRAWING_PROMPT}}
+
+Use the plan only for output-camera direction, elevation, distance, and framing. Any statement in it about the target's shape, proportions, components, appearance, or physical configuration is non-authoritative and must not override the reference images.
+
+Preserving the reference-evidenced articulation state and every relative component
+transform is the highest-priority hard constraint. Words such as reveal, expose, depth
+separation, or clear connection in the camera plan describe visibility obtainable from
+camera parallax only; they never authorize moving, opening, closing, extending, or
+separating a component. If the chosen camera cannot reveal a region without changing the
+target, retain the physical state and accept the remaining self-occlusion.
+
+VISUAL RECONSTRUCTION AUTHORITY
+
+- Reconstruct the same single physical instance shown by the references, not a category-typical substitute.
+- Keep all source-evidenced component transforms, articulation angles, overlaps, gaps,
+  attachments, and support contacts fixed while changing only the camera and rendering.
+- The local front context is authoritative for distinguishing physical target boundaries from external occlusion. The original front segment crop and white-background front cutout are authoritative for source-visible target pixels, appearance, and structure, but their mask, transparent, or white boundaries are not complete physical silhouettes where the context shows occlusion, cropping, or mask omission.
+- When matched top-view references are available, use the unmasked local top-view context and top-view segment crop jointly for the target's footprint, top-visible shape, cross-view proportions, component layout, and geometry hidden from the front. Where the two views overlap, preserve their mutually consistent structure rather than choosing a generic interpretation.
+- Determine physical ownership separately from hidden-geometry completion. A coherent region with its own closed boundary or materially distinct surface that is visible inside, on, behind, or in contact with the target in context, but is excluded by the target segment cutouts in both available views, is an external occluder, supported item, or contained item and must not appear in the output. Spatial containment, support, overlap, or contact alone does not make it part of the target. Override this exclusion only when visible material continuity, structural attachment, or a mask boundary cutting through one continuous structure demonstrates common ownership. After ownership is frozen, remove the external region and use the runtime target identity semantics as the conservative prior for reconstructing the hidden target geometry and material, constrained by continuous visible target boundaries and mutually consistent views. Semantics may complete the target behind an occluder but must never reclassify the occluder as a target component. Produce a complete plausible continuation of the target surface, never a hole, blank patch, cutout-shaped recess, or occluder-shaped imprint.
+- When the fourth and fifth references repeat front-local evidence, no matched top-view evidence is available; obtain no top-view geometry or appearance from those repetitions.
+- Do not invent, delete, merge, split, deform, symmetrize, standardize, beautify, redesign, mirror, or duplicate target geometry. Do not turn printed or surface appearance into geometry.
+- Complete only genuinely unseen regions. Use matched cross-view evidence first, then the least-changing continuation of source-visible geometry and materials, and finally the runtime target semantics as a conservative prior when the references do not fully determine the hidden geometry.
+
+RENDERING
+
+- Execute the planned 3D-reconstruction-friendly camera without copying the top-view projection as the output view.
+- Show exactly one complete target, fully inside a square canvas with safe margins, on a seamless matte-white support surface merging into a clean white background.
+- Use broad, soft, neutral, low-contrast illumination of restrained intensity, with only subtle grounding cues. Do not use hard directional light, dramatic modeling, bright hotspots, or strong specular glare.
+- Add no platform, pedestal, prop, neighboring object, room, annotation, watermark, border, inset, panel, alternate view, or overlay.
+- Keep the image generator's native output resolution.
+
+Use all five attached reference images and return only the requested image.

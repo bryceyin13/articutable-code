@@ -1,0 +1,40 @@
+Treat the attached front-view image as a real, complete, and immutable three-dimensional scene. The attached front-view image is the sole source of truth for object identity, object count, geometry, spatial position, and pose.
+
+First infer the tabletop plane, the world coordinate system, the gravity direction, scene depth, and the complete six-degree-of-freedom pose of every object. Then freeze the entire scene.
+
+For every object in the scene, preserve all of the following exactly:
+
+1. Its three-dimensional world-space position;
+2. Its rotation around all three axes: yaw, pitch, and roll;
+3. Its local up, forward, and right directions;
+4. Its orientation relative to the tabletop normal and the world gravity direction;
+5. Its size, proportions, thickness, and height;
+6. Its contact surface, contact points, and support state;
+7. Whether it is lying flat, resting on its side, standing upright, tilted, leaning, suspended, or supported by another object;
+8. Its relative distance, depth order, occlusion, and spatial relationship with every other object;
+9. Its center position, footprint, and orientation on the tabletop.
+
+Do not translate, rotate, straighten, lay down, flatten, align, rearrange, or reorient any object. Objects that are standing must remain standing. Objects that are tilted must retain their original tilt. Objects that are lying flat must remain lying flat. Do not rotate any object so that its front face becomes visible to the new camera.
+
+Change only the camera extrinsics. Do not modify any object transformation.
+
+Move the camera directly above the exact geometric center of the tabletop. Point the optical axis vertically downward, perfectly perpendicular to the tabletop. Use a camera elevation of exactly 90 degrees, with zero camera roll and zero oblique angle. Use a true orthographic projection, not a perspective projection.
+
+NON-NEGOTIABLE ORTHOGRAPHIC VIEW LOCK: Produce a mathematically pure, strict 90-degree overhead orthographic view. Use one global orthographic camera and orthographic projection for the complete scene. Keep its optical axis perpendicular to the tabletop and its image plane parallel to the tabletop, with zero camera tilt and zero perspective. Parallel world-space lines must remain parallel, distance from the camera must not change apparent scale, and there must be no perspective convergence. Any front-oblique appearance on any object makes the output invalid. Preserve the source left-right mapping, with the table's front direction at the bottom.
+
+NON-NEGOTIABLE POSE LOCK: The camera viewpoint is the only thing allowed to change. For every object and every rigid or articulated part, preserve the exact world-space translation, exact world-space rotation, and exact joint value. Any object or part pose change makes the output invalid. Apply the one global orthographic camera to every object: do not rectify only the tabletop, do not paste or imitate their front-view silhouettes, and preserve world-space pose rather than apparent front-view shape. A surface visible because a physical part is itself tilted is valid; side exposure caused by camera tilt is not. Show only geometry visible from the strict overhead direction; the tabletop must naturally occlude supports. Do not rearrange objects to improve visibility.
+
+The final image must show the same frozen physical scene viewed from directly above the center of the table. It must not become a rearranged flat-lay composition, a canonical product display, or a collection of individually reoriented product views.
+
+From the new camera position, render only the surfaces that would be physically visible. Preserve geometrically correct projection, foreshortening, self-occlusion, object-to-object occlusion, contact shadows, and projected silhouettes. For objects that remain standing or tilted, do not invent a complete front-facing view and do not convert them into a flat orientation.
+
+Preserve the exact object count, identities, tabletop coordinates, relative scale, spacing, and overall composition of the reference image. Center the tabletop in the frame, keep all four tabletop edges parallel to the image borders, and maintain even margins around the table.
+
+Frame the projected union of the complete tabletop, every tabletop object, and every protruding part. Center this complete projected extent and leave clear white safety margin on all sides with no image-boundary clipping.
+
+This is a strict camera-only scene transformation:
+freeze every object transformation, move only the camera to the exact overhead position, and re-render the unchanged scene using an orthographic camera.
+
+Return only the requested image on a {{RESOLUTION}} 16:9 canvas.
+
+Reply exactly:

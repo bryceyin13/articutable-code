@@ -1,0 +1,72 @@
+You decide the dominant visible joint type of one already-recognized articulated target
+and whether its primary state needs one minimal rotational edit before single-image 3D
+reconstruction.
+
+The identity, operability, physical state, and reconstruction camera are frozen:
+
+{{TARGET_EVIDENCE}}
+
+Planned reconstruction view:
+
+{{DRAWING_PROMPT}}
+
+Use the supplied images only to inspect the already-recognized rigid-link geometry. Do
+not rename or reclassify the target, change its camera, infer a joint from its category,
+or produce a drawing prompt. Classify the dominant externally visible relation using the
+same geometry semantics as downstream gram:
+
+- `hinge`: rotation about an axis along a shared long edge, with an elongated contact or
+  attachment region along that axis.
+- `spin`: rotation about an axis normal to the principal overlap plane, with contact
+  localized around a central pin, rivet, bearing, or approximately circular pivot region.
+- `prismatic`: translation along one axis without relative rotation.
+
+Do not call a joint hinge merely because it opens and closes. Use the axis relative to
+the contact geometry. If several joints are visible, classify the dominant relation whose
+state most affects reconstruction of the substantial links.
+
+For `prismatic`, always set `requires_open_state=false`; this stage must preserve the
+primary image without an edit.
+
+For `hinge` or `spin`, set `requires_open_state=false` only when the planned reconstruction
+view clearly and confidently preserves all of the following: separately traceable outlines
+for the substantial rigid links, readable thickness for each substantial link, a readable
+connection boundary and localized joint axis or pivot, and sufficient angular or silhouette
+separation away from the connection to reconstruct the links independently.
+
+Set `requires_open_state=true` when any required cue is missing, weak, partially occluded,
+or materially ambiguous. A slightly open, partially separated, or intermediate state is not
+sufficient when substantial portions of the link outlines remain merged, overlapping, or
+difficult to assign to separate rigid parts. When the evidence is genuinely borderline,
+prefer `requires_open_state=true`; do not require the target to appear fully closed first.
+
+For a positive `hinge` decision, request only the smallest additional rotation from the
+evidenced current state needed to make the rigid-link geometry unambiguous. The
+self-contained edit instruction must keep the base and hinge axis fixed, keep the entire
+hinge-side elongated attachment connected, make the gap approach zero at that side and
+widen gradually away from it, and prohibit lifting or translating the moving link.
+
+For a positive `spin` decision, request only the smallest additional rotation from the
+evidenced current state needed to make the rigid-link geometry unambiguous. The
+self-contained edit instruction must keep the base, pivot position, fastener, and local
+overlap fixed, preserve attachment through the pivot, separate outlines only away from
+the pivot, and prohibit translating the moving link.
+
+The requested edit is only a reconstruction state. Do not infer a canonical, closed, or
+zero state from joint type. Preserve the support relationship and every component outside
+the requested relative rotation.
+
+Return valid JSON only with exactly these fields:
+
+{
+  "joint_type": "hinge",
+  "requires_open_state": true,
+  "reason": "one concise observation-based sentence",
+  "movable_components": "the substantial rigid links that move relatively",
+  "opening_amount": "the minimum target-specific relative rotation needed",
+  "open_state_instruction": "one self-contained category-neutral image-edit instruction with the applicable attachment constraints"
+}
+
+For a negative `hinge` or `spin` decision, and for every `prismatic` decision, set the
+final three fields to JSON null. Do not generate or edit an image, inspect files, execute
+commands, create directories, or write JSON to a file.

@@ -1,0 +1,29 @@
+
+Create exactly one reconstruction-ready condition image of the table for single-image 3D reconstruction.
+
+Exactly two isolated table reference images are attached in this order:
+1. the table's front-view segment cut out on white;
+2. the geometrically matched top-view table segment crop when available, otherwise repeated front-segment evidence.
+
+TARGET IDENTITY
+
+{{TARGET_EVIDENCE}}
+
+The target is already known to be the table; this is an input fact, not a classification task. Use the identity text only to preserve the same physical table instance, proportions, tabletop outline, thickness, legs, supports, materials, and visible details shown by the references. Do not replace it with a category-typical table or invent, delete, merge, symmetrize, standardize, beautify, or redesign geometry.
+
+CAMERA PLAN
+
+{{DRAWING_PROMPT}}
+
+Use the plan for output-camera direction, elevation, distance, and framing. Preserve the known table identity while executing that planned camera. The plan must not override reference-visible geometry or appearance.
+
+Regions omitted from the isolated table references because external scene objects occluded the table are hidden table geometry, not holes or table components. Under the planned camera, remove those external occluders and reconstruct the table regions they hide using the known table semantics together with visible boundaries, material, thickness, structural continuity, and mutually consistent front and top-view evidence. Complete only genuinely unseen regions using the least-changing continuation supported by that evidence. Do not reproduce an excluded scene object or leave an occluder-shaped hole, recess, seam, shadow, or imprint.
+
+RENDERING
+
+- Show exactly one complete table, fully inside a square canvas with safe margins, on a seamless matte-white ground merging into a clean white background.
+- Use broad, soft, neutral, low-contrast illumination of restrained intensity, with subtle grounding cues and no bright hotspots or strong glare.
+- Add no object on the tabletop, prop, room, annotation, watermark, border, inset, panel, alternate view, or overlay.
+- Keep the image generator's native output resolution.
+
+Use both attached reference images and return only the requested image.

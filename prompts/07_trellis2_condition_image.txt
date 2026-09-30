@@ -1,0 +1,61 @@
+
+Create exactly one reconstruction-ready condition image of the target for single-image 3D reconstruction.
+
+{{BRANCH_REQUIREMENTS}}
+
+{{REFERENCE_DESCRIPTION}}
+
+TARGET IDENTITY
+
+{{TARGET_EVIDENCE}}
+
+Use this identity information only to locate and identify the target. Visible image evidence controls its appearance and physical state.
+
+DRAWING PLAN
+
+{{DRAWING_PROMPT}}
+
+The planner has already made the final camera decision. Treat its camera direction, numeric elevation, and framing as authoritative and execute them faithfully. Never choose, optimize, revise, or substitute another camera. Visible evidence remains authoritative for identity, geometry, appearance, and the frozen physical state.
+
+EVIDENCE AUTHORITY
+
+- The first reference, the complete front source scene, and the third reference, its unmasked local crop, are authoritative for visible target structure, appearance, articulation, world-up, the source support plane, pose relative to that plane, and support contact.
+- The fourth reference is an approximate cutout and is not an authoritative complete silhouette.
+- Generated top-view evidence is secondary auxiliary completion evidence only, never identity, pose, support, contact, or output-camera evidence. Use the second complete top-view hypothesis and, only when explicitly described as such, a fifth matched top-view crop solely to complete geometry genuinely hidden, overlapped, or cropped in the front evidence and only where consistent with it. If the fifth reference is described as a front mask placeholder, use it only for localization and infer no top-view geometry from it.
+- Keep only the target. All other visible regions are context and must not become target geometry.
+
+FROZEN PHYSICAL STATE AND PLANNED CAMERA
+
+Preserve the evidenced physical state while executing the camera already chosen by the planner. The camera may move; the target and support plane may not.
+
+1. Preserve the depicted physical state and support contact.
+   - From the first complete front source scene, infer world-up, the source support plane, the whole target's transform relative to that plane, every component's relative transform, articulation state, and the exact supporting surfaces, edges, or points. Source-consistent top-view evidence may only assist completion of front-hidden geometry and must not modify this state. Preserve any evidenced gap as a gap.
+   - Freeze that state. The same target regions must keep the same orientation, distance, and contact relationship to the same physical support plane. Never stand, lay, flip, tilt, rotate, rebalance, open, close, or otherwise repose the target, and never substitute a category-typical display pose.
+   - Screen-up, crop orientation, and cutout orientation are not gravity evidence. Determine gravity and support from the complete scene rather than making the isolated target look conventionally upright.
+   - Allow natural contact occlusion. Do not expose, relocate, or replace a contact region merely to make it visible.
+
+2. Execute the planned target-adaptive, 3D-reconstruction-friendly camera.
+   - Apply exactly the direction, distance, framing, and numeric elevation in the drawing plan. That elevation is measured above the horizontal support floor, where 0 degrees is floor-parallel and 90 degrees is overhead. Do not impose a universal elevation range or normalize this target's planned view to a generic low, high, or canonical angle.
+   - Orbit and reframe the camera around the fixed target and fixed support plane as directed. Do not preserve or restore the source camera instead, infer a new angle, or replan from any reference image.
+   - Preserve the planned balance of silhouette, complementary surfaces, depth separation, source-supported thickness, openings, and connections. Keep natural moderate perspective, world-up vertical, camera roll zero, and the ground level. Never copy a provided top-view projection.
+   - Execute no camera result that changes target pose, articulation, support, contact, or the support plane. Grounding is secondary to target geometry and may remain visually restrained; a normally occluded contact face need not become visible.
+
+FAITHFUL APPEARANCE AND COMPLETION
+
+- Reproduce all source-visible target regions faithfully, including thin structures, openings, gaps, connections, and material boundaries.
+- Complete only geometry newly exposed by the camera change or genuinely missing from the mask or crop. Use uniquely matched, source-consistent top-view evidence when available; otherwise use the least-changing continuation supported by visible boundaries. Completion must not alter the frozen physical state or contact.
+- Do not invent, delete, merge, split, deform, symmetrize, standardize, beautify, redesign, mirror, or duplicate target geometry.
+- “Complete target” means that no target component is deleted or cropped by the canvas; it does not require every surface or contact region to be visible.
+
+SUPPORT, BACKGROUND, AND LIGHTING
+
+- Retain the same physical support plane, plane normal, target-relative height, and evidenced contact or gap; change only the support's appearance to seamless matte white merging into a clean white background. Do not fit the target to a newly inferred floor.
+- Show exactly one target. Add no platform, pedestal, prop, neighboring object, room, label, or alternate view.
+- Use broad, soft, neutral, low-contrast illumination of restrained intensity. Add only the amount of natural contact shading, local ambient occlusion, and soft-edged cast shadow needed for a readable support relationship; its strength may vary with the target and must not obscure geometry or material cues. Do not lift or move the target to expose a hidden contact face, and do not use hard directional light, dramatic modeling, bright hotspots, or strong specular glare.
+
+OUTPUT
+
+- Produce one PNG containing exactly one complete target, fully inside the square canvas with safe margins.
+- Add no text, annotation, watermark, border, inset, panel, alternate view, or overlay.
+- Keep the native output resolution and return only the requested image.
+- Return the generated image as the image-generation result. Do not inspect files, execute shell commands, create directories, copy or move files, or validate, resize, re-encode, or normalize the generated image; the outer pipeline handles all artifact operations.

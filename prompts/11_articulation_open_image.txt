@@ -1,0 +1,70 @@
+
+Create exactly one reconstruction-ready image by changing only the target's specified
+articulation state.
+
+Exactly one condition image is attached. It is the sole visual authority for the target's
+identity, exterior geometry, proportions, materials, colors, gravity-relative base pose,
+and support contact.
+
+TARGET EVIDENCE
+
+{{TARGET_EVIDENCE}}
+
+OPEN-STATE INSTRUCTION
+
+{{OPEN_STATE_INSTRUCTION}}
+
+JOINT CONTRACT
+
+- Joint type: `{{JOINT_TYPE}}`.
+- Requested amount: {{OPENING_AMOUNT}}
+- For `hinge`, keep the axis and the full elongated hinge-side attachment fixed. The
+  separating gap must approach zero at the hinge side and widen gradually away from it.
+  Rotate the moving link; never lift or translate it.
+- For `spin`, keep the central pivot, fastener, and local overlap fixed. Preserve physical
+  attachment through the pivot while rotating the moving link in its motion plane; never
+  translate it.
+- The input state and requested edit determine the result. Do not infer a canonical,
+  closed, or zero state from the joint type.
+
+ARTICULATION EDIT
+
+- Preserve the same single physical instance. Keep the base link, support plane, scale,
+  world-up direction, and every unspecified or non-moving component fixed.
+- Apply only the specified relative rotation between the substantial externally visible
+  rigid links, around the shared localized axis supported by the input image.
+- Use the requested smallest target-specific rotation that produces readable outlines,
+  thickness layers, and connection geometry away from the fixed attachment.
+- Keep every moving link mechanically attached at the same connection. Preserve the
+  connection position and axis; do not translate a link away from it.
+- Do not fuse, detach, duplicate, resize, reshape, replace, mirror, or redesign any link.
+- Preserve exterior faces, thickness cues, materials, surface boundaries, and visible
+  details.
+- Expose every moving link and connection clearly enough to reconstruct them as separate
+  connected rigid parts.
+
+MINIMAL NEWLY EXPOSED GEOMETRY
+
+- Generate only the newly exposed side thickness and connection surfaces required by the
+  small separation.
+- Continue visible boundaries conservatively. Do not invent hidden internal structure,
+  additional moving elements, accessories, controls, text, labels, or unrelated
+  mechanisms.
+
+CAMERA AND RENDERING
+
+- Freely adjust camera azimuth, elevation, orbit, and distance from the input view to
+  choose the clearest natural reconstruction view of the opened links and connections.
+  The result does not need to preserve the input viewpoint.
+- Keep the complete target and opened link inside a square canvas with safe margins,
+  natural moderate perspective, world-up vertical, and camera roll zero.
+- Retain a seamless matte-white support surface and clean white background with broad,
+  soft, neutral, low-contrast lighting and restrained contact shading.
+- Show exactly one target and one state. Add no alternate view, before/after panel, inset,
+  exploded view, cutaway, transparency, platform, prop, neighboring object, room, text,
+  annotation, watermark, or border.
+
+OUTPUT
+
+Use the attached image as the sole visual reference. Keep the native output resolution and
+return only the requested image.

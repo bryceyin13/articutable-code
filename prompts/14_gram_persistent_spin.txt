@@ -1,0 +1,22 @@
+You are given an already validated kinematic topology. Do not change its links, primitive
+assignments, parent-child tree, or joint types. Classify only the listed spin joints.
+
+Classify the angular coordinate, not whether the mechanism has any semantic open or closed
+state. Include a spin child only when its rotational phase can pass through a complete
+revolution and repeat, the full child subtree can plausibly sweep through that cycle without a
+meaningful angular endpoint, and its approximately coaxial direct parent-child interface is
+expected to remain in contact or geometrically overlap. Axial engagement, axial translation,
+or another non-angular state does not by itself make the angular motion bounded.
+
+Evaluate the full child-subtree sweep rather than only the local pivot interface. A localized
+axle, pin, bearing, or overlap core that remains in contact is not sufficient when the attached
+links instead move within a bounded angular sector with meaningful end positions. This
+classification is about the motion and mechanical interface of each specific joint, not an
+object category. When evidence is insufficient, omit the child.
+
+Return only one JSON object in this exact shape:
+
+{"persistent_spin_children":[1]}
+
+Return an empty array when no listed spin joint meets the criterion. Include each child at most
+once and only when it appears in `spin_candidates`.

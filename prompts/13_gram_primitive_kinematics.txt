@@ -1,0 +1,108 @@
+You are given tagged multi-view renders of one object. Each colored `ID n` region is an
+indivisible geometric primitive. Group primitives by rigid co-motion, not appearance;
+decorative geometry belongs to the rigid link carrying it. Link 0 is the fixed base. Do
+not create a joint from a semantic label alone. Use observable geometric and mechanical
+evidence such as a closed circular or linear boundary, a separable seam, a visibly
+independent or nested component, or several primitives that are rigid with each other but
+separable from the main body. A component shown closed and static may still be a movable link.
+
+Primitive IDs are arbitrary labels. Never infer grouping from an ID's numeric value,
+parity, color, list order, or from an output-format description. First locate every
+candidate joint, contact, or overlap region. Then trace each continuous rigid member
+through and away from that region using surface continuity, depth, thickness, attachment,
+and consistent evidence from all views and meshes. A rigid member may continue from one
+side of an overlap region to the opposite side.
+
+Do not merge primitives merely because they lie on the same side of an image, point in the
+same direction, appear end-to-end in one projection, touch, or overlap. Projection can hide
+crossing or depth order. Use the 3D meshes and other views to distinguish rigid continuity
+from localized movable contact.
+
+When `primitive_adjacency` is supplied, `shared_edges`, `total_boundary_length`, and the
+`boundary_*` fields summarize the complete boundary between two labels in the normalized
+working-mesh frame. `boundary_components` contains only its strongest connected segments;
+the component-count and omitted-length fields disclose any fragmentation. First build a
+boundary-location graph: for each primitive, order its incident boundaries by their 3D centers
+and endpoints along the primitive. A sequence of separated boundary locations through one or
+more extended primitives is an attachment path between its outer branches. Treat the strongest
+components as localized attachment evidence, but use the complete boundary center and range so
+omitted fragments cannot hide the path. These values are not a hard merge rule; a boundary
+confined to the immediate joint or overlap region may be movable contact.
+
+For a localized revolute overlap with several outward branches, defer only primitives whose
+geometry is predominantly compact and confined to the immediate axis neighborhood. A primitive
+that spans substantial radial or longitudinal distance, connects distinct boundary endpoints,
+or changes projected side or depth through the overlap is a structural bridge and must help
+determine the main rigid members before compact core geometry is assigned.
+
+When four major branches meet around one localized revolute core, enumerate all three possible
+pairings into two rigid members before choosing a partition. Evaluate each pairing with the same
+evidence. Projected collinearity, smooth image-space centerlines, matching half-space, and similar
+principal directions are weak evidence near the overlap and cannot determine a pairing alone.
+Prefer explicit chains in the boundary-location graph, spatially compatible endpoints, continuous
+attachment paths outside the immediate core, cross-section and thickness agreement, depth-layer
+continuity, and consistent multi-view surface evidence. Do not replace an available boundary chain
+with a visually straighter pairing of outer branch centroids. A rigid member may enter the overlap
+from one projected side and leave on the opposite side, and may change visible depth layer while
+passing through it.
+
+For each candidate partition, distinguish rigid attachment boundaries from localized movable
+contact. Connections within one link should form a continuous path outside the immediate axis
+neighborhood; interfaces between links should be concentrated near the revolute contact region.
+Reject a partition that cuts a strong nonlocal attachment or whose supposed same-link branches
+connect only through localized pivot contact. Explicitly compare the selected partition with its
+best competitor. If projected straightness favors one partition but actual 3D boundary locations
+and attachment continuity favor the competitor, choose the competitor. A compact core primitive
+that contacts several branches must not decide the pairing by adjacency count alone.
+
+After pairing the outer branches, compare all plausible assignments of structural bridge
+primitives. For each completed link, trace its strongest boundary path between the paired outer
+branches. Prefer the global assignment that keeps both links connected through strong, spatially
+separated nonlocal boundaries; use total boundary length to compare otherwise compatible paths.
+Do not give one link a strong two-ended bridge while leaving the other dependent on weak
+axis-local contacts when swapping the bridge assignments yields two stronger paths. Compact
+axis-local pieces may be assigned last and must not compensate for a weak structural path.
+
+{{JOINT_SELECTION_POLICY}}
+
+Assign every primitive ID exactly once. Produce a single rooted tree: every non-base link
+has one parent. Allowed joints are `revolute` with subtype `hinge` or `spin`, and
+`prismatic` with no subtype. Merge rigidly connected geometry instead of using fixed
+joints. Reject loops, free/spherical joints, and multiple parents. Do not invent links from
+appearance alone or without supporting geometric evidence.
+
+Classify revolute subtypes by contact geometry:
+
+- `hinge`: the axis runs along the shared long edge and the contact region is elongated
+  along that axis.
+- `spin`: the axis is normal to the principal overlap plane. Contact is localized around a
+  central pin, rivet, bearing, or approximately circular region, and the two members rotate
+  within the same plane about that center.
+
+Do not classify a joint as hinge merely because the parts open and close. Use the axis
+relative to the contact region: along a shared long edge means hinge; normal to the local
+overlap plane means spin.
+
+Before returning JSON, compare plausible primitive partitions. Mentally apply a small
+motion to each candidate child while holding its candidate parent fixed. Choose a partition
+for which every primitive inside each link remains rigidly connected and only interfaces
+between links change. Reject a partition that cuts a continuous member away from the joint
+region, breaks a natural continuation through an overlap core, or joins separate members
+only because of localized contact.
+
+Also return `drawer_groups`. Each item identifies one enclosing parent link and all of its
+direct prismatic children that translate into the same enclosure. Return an empty array
+when no such shared enclosure exists.
+
+Return only one JSON object with these fields:
+
+- `links`: a nonempty array of objects containing integer `id`, string `name`, and integer
+  array `primitive_ids`;
+- `joints`: an array of objects containing integer `parent`, integer `child`, string `type`,
+  and `subtype` only for revolute joints;
+- `drawer_groups`: an array of objects containing integer `parent` and integer array
+  `children`.
+
+Use dense link IDs beginning at zero. Assign every supplied primitive exactly once. For a
+revolute joint, `type` is `revolute` and `subtype` is `hinge` or `spin`. For a prismatic
+joint, `type` is `prismatic` and `subtype` is omitted.
