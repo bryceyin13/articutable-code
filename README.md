@@ -3,6 +3,10 @@
 ArticuTable reconstructs executable articulated tabletop scenes from generated
 or real images. This repository contains the **core scene pipeline**, **GRAM**, and PSGSR scene registration.
 
+## ArticuTable-100
+
+Download the ArticuTable-100 simulation-ready scene asset package from [Google Drive](https://drive.google.com/file/d/1udTcI9ESuk-TbKOYjIQ4ti8t4CMoGW4b/view?usp=sharing).
+
 ## Repository structure
 
 ```text
