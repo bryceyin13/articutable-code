@@ -1,5 +1,7 @@
 # ArticuTable
 
+[[Paper]](https://arxiv.org/abs/2610.05249) ArticuTable: Generating Instance-Level Interactive Rigid-Articulated 3D Tabletop Scenes from a Single Image
+
 ArticuTable reconstructs executable articulated tabletop scenes from generated
 or real images. This repository contains the **core scene pipeline**, **GRAM**, and PSGSR scene registration.
 
@@ -131,4 +133,20 @@ python -m psgsr.registration \
   --blueprint /path/to/blueprint.json \
   --image-to-3d-manifest /path/to/image_to_3d_manifest.json \
   --output-dir /path/to/output
+```
+
+## Citation
+
+If you use ArticuTable in your research, please cite:
+
+```bibtex
+@misc{lv2026articutablegeneratinginstancelevelinteractive,
+  title={ArticuTable: Generating Instance-Level Interactive Rigid-Articulated 3D Tabletop Scenes from a Single Image},
+  author={Kai Lv and Yibo Yin and Lijun Guo and Heng Fan and Kaihao Zhang and Xingping Dong},
+  year={2026},
+  eprint={2610.05249},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2610.05249},
+}
 ```
