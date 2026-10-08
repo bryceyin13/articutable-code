@@ -16,11 +16,11 @@
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2610.05249"><img alt="Paper: arXiv 2610.05249" src="https://img.shields.io/badge/Paper-arXiv%3A2610.05249-6755A5?style=for-the-badge"></a>&nbsp;
-  <a href="https://johnnyboy1013.github.io/articutable-project/"><img alt="Project page" src="https://img.shields.io/badge/Project-Website-6755A5?style=for-the-badge"></a>&nbsp;
-  <a href="https://johnnyboy1013.github.io/articutable-project/#demo"><img alt="Interactive 3D demo" src="https://img.shields.io/badge/Demo-Interactive%203D-6755A5?style=for-the-badge"></a>&nbsp;
-  <a href="https://johnnyboy1013.github.io/articutable-project/#videos"><img alt="Simulation videos" src="https://img.shields.io/badge/Videos-7%20Scenes-6755A5?style=for-the-badge"></a>&nbsp;
-  <a href="https://drive.google.com/file/d/1udTcI9ESuk-TbKOYjIQ4ti8t4CMoGW4b/view?usp=sharing"><img alt="ArticuTable-100 dataset" src="https://img.shields.io/badge/Dataset-100%20Scenes-6755A5?style=for-the-badge"></a>
+  <a href="https://arxiv.org/abs/2610.05249"><img alt="Paper: arXiv 2610.05249" src="https://img.shields.io/badge/Paper-arXiv%3A2610.05249-6755A5?style=flat"></a>&nbsp;
+  <a href="https://johnnyboy1013.github.io/articutable-project/"><img alt="Project page" src="https://img.shields.io/badge/Project-Website-6755A5?style=flat"></a>&nbsp;
+  <a href="https://johnnyboy1013.github.io/articutable-project/#demo"><img alt="Interactive 3D demo" src="https://img.shields.io/badge/Demo-Interactive%203D-6755A5?style=flat"></a>&nbsp;
+  <a href="https://johnnyboy1013.github.io/articutable-project/#videos"><img alt="Simulation videos" src="https://img.shields.io/badge/Videos-7%20Scenes-6755A5?style=flat"></a>&nbsp;
+  <a href="https://drive.google.com/file/d/1udTcI9ESuk-TbKOYjIQ4ti8t4CMoGW4b/view?usp=sharing"><img alt="ArticuTable-100 dataset" src="https://img.shields.io/badge/Dataset-100%20Scenes-6755A5?style=flat"></a>
 </p>
 
 [![ArticuTable reconstructs interactive articulated tabletop scenes from a single image](https://johnnyboy1013.github.io/articutable-project/assets/teaser.png?v=20261008-v2)](https://johnnyboy1013.github.io/articutable-project/)
