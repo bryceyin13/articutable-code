@@ -12,11 +12,11 @@
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2610.05249"><img src="assets/paper-button.svg?v=2" alt="Paper"></a>&nbsp;
-  <a href="https://johnnyboy1013.github.io/articutable-project/"><img src="assets/project-page-button.svg?v=2" alt="Project Page"></a>&nbsp;
-  <a href="https://johnnyboy1013.github.io/articutable-project/#demo"><img src="assets/demo-button.svg?v=2" alt="3D Demo"></a>&nbsp;
-  <a href="https://johnnyboy1013.github.io/articutable-project/#videos"><img src="assets/videos-button.svg?v=2" alt="Videos"></a>&nbsp;
-  <a href="https://drive.google.com/file/d/1udTcI9ESuk-TbKOYjIQ4ti8t4CMoGW4b/view?usp=sharing"><img src="assets/dataset-button.svg?v=2" alt="Dataset"></a>
+  <a href="https://arxiv.org/abs/2610.05249"><img src="assets/paper-badge.svg" alt="Paper"></a>&nbsp;
+  <a href="https://johnnyboy1013.github.io/articutable-project/"><img src="assets/project-page-badge.svg" alt="Project Page"></a>&nbsp;
+  <a href="https://johnnyboy1013.github.io/articutable-project/#demo"><img src="assets/demo-badge.svg" alt="3D Demo"></a>&nbsp;
+  <a href="https://johnnyboy1013.github.io/articutable-project/#videos"><img src="assets/videos-badge.svg" alt="Videos"></a>&nbsp;
+  <a href="https://drive.google.com/file/d/1udTcI9ESuk-TbKOYjIQ4ti8t4CMoGW4b/view?usp=sharing"><img src="assets/dataset-badge.svg" alt="Dataset"></a>
 </p>
 
 [![ArticuTable reconstructs interactive articulated tabletop scenes from a single image](https://johnnyboy1013.github.io/articutable-project/assets/teaser.png?v=20261008-v2)](https://johnnyboy1013.github.io/articutable-project/)
