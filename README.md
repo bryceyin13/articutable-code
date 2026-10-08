@@ -1,4 +1,4 @@
-<h1 align="center"><a href="https://johnnyboy1013.github.io/articutable-project/"><img src="https://johnnyboy1013.github.io/articutable-project/assets/favicon-180.png" width="32" height="32" alt="ArticuTable project icon"></a> ArticuTable</h1>
+<h1 align="center"><a href="https://johnnyboy1013.github.io/articutable-project/"><img src="https://johnnyboy1013.github.io/articutable-project/assets/favicon-180.png" width="28" height="28" alt="ArticuTable project icon"></a> ArticuTable</h1>
 
 <p align="center">Generating Instance-Level Interactive Rigid-Articulated 3D Tabletop Scenes from a Single Image</p>
 
