@@ -1,13 +1,33 @@
-# ArticuTable
+<h1 align="center">ArticuTable</h1>
 
-[[Paper]](https://arxiv.org/abs/2610.05249) ArticuTable: Generating Instance-Level Interactive Rigid-Articulated 3D Tabletop Scenes from a Single Image
+<p align="center"><strong>Generating Instance-Level Interactive Rigid-Articulated 3D Tabletop Scenes from a Single Image</strong></p>
 
-ArticuTable reconstructs executable articulated tabletop scenes from generated
-or real images. This repository contains the **core scene pipeline**, **GRAM**, and PSGSR scene registration.
+<p align="center">
+  <a href="https://johnnyboy1013.github.io/">Kai Lv</a> ·
+  <a href="https://bryceyin13.github.io/">Yibo Yin</a> ·
+  <a href="https://shawnricardo.github.io/">Lijun Guo</a> ·
+  <a href="https://hengfan2010.github.io/">Heng Fan</a> ·
+  <a href="https://zhangkaihao.github.io/">Kaihao Zhang</a> ·
+  <a href="https://xingpingdong.github.io/">Xingping Dong</a>
+</p>
 
-## ArticuTable-100
+<p align="center">
+  <a href="https://arxiv.org/abs/2610.05249">Paper</a> ·
+  <a href="https://johnnyboy1013.github.io/articutable-project/">Project Page</a> ·
+  <a href="https://johnnyboy1013.github.io/articutable-project/#demo">Interactive 3D Demo</a> ·
+  <a href="https://johnnyboy1013.github.io/articutable-project/#videos">Videos</a> ·
+  <a href="https://drive.google.com/file/d/1udTcI9ESuk-TbKOYjIQ4ti8t4CMoGW4b/view?usp=sharing">Dataset</a>
+</p>
 
-Download the ArticuTable-100 simulation-ready scene asset package from [Google Drive](https://drive.google.com/file/d/1udTcI9ESuk-TbKOYjIQ4ti8t4CMoGW4b/view?usp=sharing) (~20 GB).
+[![ArticuTable reconstructs interactive articulated tabletop scenes from a single image](https://johnnyboy1013.github.io/articutable-project/assets/teaser.png?v=20261008-v2)](https://johnnyboy1013.github.io/articutable-project/)
+
+## Overview
+
+ArticuTable turns a single generated or real tabletop image into an input-view-consistent, simulation-ready 3D scene with executable part-level motion. **GRAM** recovers articulated object structure and motion ranges; **PSGSR** registers the reconstructed objects into a coherent scene. This repository contains the core pipeline and both components.
+
+## Dataset
+
+[Download ArticuTable-100](https://drive.google.com/file/d/1udTcI9ESuk-TbKOYjIQ4ti8t4CMoGW4b/view?usp=sharing), a collection of 100 simulation-ready tabletop scenes (~20 GB).
 
 ## Repository structure
 
@@ -16,7 +36,6 @@ pipeline/   image preprocessing, image-to-3D, segmentation, and orchestration
 gram/       primitive segmentation, kinematic inference, and URDF export
 psgsr/      pose, scale, and geometry-aware scene registration
 prompts/    prompts used by the pipeline and GRAM
-configs/    non-sensitive method configuration
 ```
 
 ## Setup
