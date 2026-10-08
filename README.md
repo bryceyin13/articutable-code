@@ -3,12 +3,13 @@
 <p align="center">Generating Instance-Level Interactive Rigid-Articulated 3D Tabletop Scenes from a Single Image</p>
 
 <p align="center">
-  <a href="https://johnnyboy1013.github.io/">Kai Lv</a> ·
-  <a href="https://bryceyin13.github.io/">Yibo Yin</a> ·
+  <a href="https://johnnyboy1013.github.io/">Kai Lv<sup>*</sup></a> ·
+  <a href="https://bryceyin13.github.io/">Yibo Yin<sup>*</sup></a> ·
   <a href="https://shawnricardo.github.io/">Lijun Guo</a> ·
   <a href="https://hengfan2010.github.io/">Heng Fan</a> ·
   <a href="https://zhangkaihao.github.io/">Kaihao Zhang</a> ·
-  <a href="https://xingpingdong.github.io/">Xingping Dong</a>
+  <a href="https://xingpingdong.github.io/">Xingping Dong<sup>†</sup></a><br>
+  <small>* Equal contribution · † Corresponding author</small>
 </p>
 
 <p align="center">
