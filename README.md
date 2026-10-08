@@ -12,7 +12,7 @@
 </p>
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2610.05249"><img src="assets/paper-badge.svg" alt="Paper"></a>&nbsp;
+  <a href="https://arxiv.org/abs/2610.05249"><img src="assets/paper-badge-v2.svg" alt="Paper"></a>&nbsp;
   <a href="https://johnnyboy1013.github.io/articutable-project/"><img src="assets/project-page-badge.svg" alt="Project Page"></a>&nbsp;
   <a href="https://johnnyboy1013.github.io/articutable-project/#demo"><img src="assets/demo-badge.svg" alt="3D Demo"></a>&nbsp;
   <a href="https://johnnyboy1013.github.io/articutable-project/#videos"><img src="assets/videos-badge.svg" alt="Videos"></a>&nbsp;
