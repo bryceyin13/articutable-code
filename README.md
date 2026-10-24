@@ -17,7 +17,7 @@
   <a href="https://johnnyboy1013.github.io/articutable-project/"><img src="assets/project-page-badge-centered.svg" alt="Project Page"></a>&nbsp;
   <a href="https://johnnyboy1013.github.io/articutable-project/#demo"><img src="assets/demo-badge-centered.svg" alt="3D Demo"></a>&nbsp;
   <a href="https://johnnyboy1013.github.io/articutable-project/#videos"><img src="assets/videos-badge-centered.svg" alt="Videos"></a>&nbsp;
-  <a href="https://drive.google.com/file/d/1udTcI9ESuk-TbKOYjIQ4ti8t4CMoGW4b/view?usp=sharing"><img src="assets/dataset-badge-centered.svg" alt="Dataset"></a>
+<a href="https://huggingface.co/datasets/Yibo8/articutable-100"><img src="assets/dataset-badge-centered.svg" alt="Dataset"></a>
 </p>
 
 [![ArticuTable reconstructs interactive articulated tabletop scenes from a single image](https://johnnyboy1013.github.io/articutable-project/assets/teaser.png?v=20261008-v2)](https://johnnyboy1013.github.io/articutable-project/)
@@ -28,7 +28,7 @@ ArticuTable turns a single generated or real tabletop image into an input-view-c
 
 ## Dataset
 
-[Download ArticuTable-100](https://drive.google.com/file/d/1udTcI9ESuk-TbKOYjIQ4ti8t4CMoGW4b/view?usp=sharing), a collection of 100 simulation-ready tabletop scenes (~20 GB).
+[Download ArticuTable-100](https://huggingface.co/datasets/Yibo8/articutable-100), a collection of 100 simulation-ready tabletop scenes (~20 GB).
 
 ## Repository structure
 
